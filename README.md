@@ -1,6 +1,6 @@
 # QoS-driven scheduling experiments
 
-This repository contains the input data used in the experiments described in the paper submitted to "ACM Transactions on Computer Systems" and instructions about how to proceed to run the simulation and measurement experiments using simulators and .
+This repository contains the input data used in the experiments described in the paper submitted to "ACM Transactions on Computer Systems" and instructions about how to proceed to run the simulation and measurement experiments.
 
 # Input data
 
