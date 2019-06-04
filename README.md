@@ -51,17 +51,6 @@ repository (link)
 
 We have implemented a proof-of-concept of the QoS-driven scheduler for the popular kubernetes system. In the kubernetes ecosystem, the instances are represented by pods that are associated with a deployment controller. In this study, we have considered the relation 1-to-1 between a deployment and a pod. In other words, all deployments must keep one pod running. Basically, two components were modified from the original kubernetes code: Cloudish queue and Cloudish scheduler. The former keeps the pods in the pending queue according to TTV values, while the latter implements the QoS-driven scheduler as described in the paper. Our QoS-diven scheduler implementation is available at repository ([link](https://github.com/cloudish-ufcg/cloudish-kubernetes-experiment/tree/experiments)).
 
-In order to support QoS-driven scheduler execution, we have used two applications: prometheus and kube-watch. The prometheus 
+In order to support QoS-driven scheduler execution, we have used two applications: prometheus and kube-watch. The prometheus application is responsible for storing customized metrics in the system, while the kube-watch monitors the pod events (e.g. creation, updating and termination) in order to publish the QoS metrics (e.g. running and waiting times of a pod) on prometheus. These QoS metrics are required by QoS-driven scheduler while it is making allocation and preemption decisions. We evolve the kube-watch to compute the metrics of interest and our code is available in the repository ([link](https://github.com/cloudish-ufcg/cloudish-kube-watch/tree/experiments-journal-paper)).   
 
-
-Prometheus
-
-kube-watch application
-
-Instructions...
-
-repository (link)
-[I'm an inline-style link](https://www.google.com)
-
-The prototype was developed on top of Kubernetes version 9. If you 
-experiment image version for prometheus, kube-wtach and scheduler:
+As mentioned before, the instructions about how to deploy a kubernetes cluster using the QoS-driven scheduler and how to understand the result files of a measurement experiment can be found in the repository ([link](https://github.com/cloudish-ufcg/cloudish-kubernetes-experiment/tree/experiments)).
