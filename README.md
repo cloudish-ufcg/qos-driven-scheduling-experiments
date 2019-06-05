@@ -45,7 +45,21 @@ In the case of the measurement experiments, the infrastructure is formed by addi
 
 # Simulator 
 
-We have implemented the simulator... . Our simulator is available at repository ([link](link para forge da ericsson))
+We have implemented the simulator able to emulate both scheduling policies: priority-based and QoS-driven. Our simulator was developed in Erlang on top of the [Sim-diasca simulation framework](http://sim-diasca.com) and it is available at repository ([link](https://forge.ericsson.net/plugins/git/ufcg-er/cloudish?a=tree&hb=experiments-journal-paper)). In order to run a simulation test, you need to go into cloudish directory and run the following command:
+
+`bash run_simulation.sh $SIM_DURATION $SCHEDULING_POLICY $WORKLOAD_FILE $INFRASTRUCTURE_FILE 3 $SAFTEY_MARGIN $PERIODICITY false $PREEMPTION_OVERHEAD_FILE $MIGRATION_OVERHEAD_FILE 1 $LIMITING_PREEMPTION $EXTRA_OVERHEAD`
+
+where,
+- *SIM_DURATION* is the duration of the simulation test in seconds;
+- *SCHEDULING_POLICY* is the scheduling policy to be simulated {ttv | priority};
+- *WORKLOAD_FILE* is the name of the workload file description that should be located in the data directory;
+- *INFRASTRUCTURE_FILE* is the name of the infrastructure file description that should be located in the data directory;
+- *SAFTEY_MARGIN* is the safety margin in seconds to be considered while the the QoS-driven scheduler is making decisions; 
+- *PERIODICITY* is the maximum time between two sequential processing of the pending queue;
+- *PREEMPTION_OVERHEAD_FILE* is the name of the file with a set of preemption overhead values to be considered when an instance is allocated in the same host that it was previously allocated. This file should be located in the data directory;
+- *MIGRATION_OVERHEAD_FILE* is the name of the file with a set of migration overhead values to be considered when an instance is allocated in a host different whose it was previously allocated. This file should be located in the data directory;
+- *LIMITING_PREEMPTION* is the flag that indicates if the mechanism to limit the number of preemption should be used {true | false};
+- *EXTRA_OVERHEAD* indicates a extra value to be incremented to 1-SLO to be considered as the maximum overhead of preemption. For instance, 0 indicates that the limit of overhead is set to 1-slo.
 
 # QoS-driven scheduler (prototype implementation for kubernetes)
 
