@@ -1,0 +1,59 @@
+# Warning: using immediate writes here, thus this header might be
+# inaccurate, should subsequent curve reordering or addition be performed.
+# Only initially created curves are listed below, the dynamically added ones
+# are not visible in this file.
+
+# This time series data file has been written on 11/6/2018, at 13:47:40, on
+# host ubuntu.localdomain (node: Sim-Diasca-Cloudish_scheduler-diasca-49622782-computing-node@ubuntu.localdomain).
+
+# Probe name: 'Preemption Infra Manager 1'.
+# Probe title: 'Requests received'.
+
+# Associated meta-data:
+# - version of the Common layer: 0.1
+# - version of the WOOPER layer: 1.0
+# - version of the Traces layer: 0.3
+# - version of the Sim-Diasca engine: 2.2.11-rc1
+# - name of the simulation case: Cloudish scheduler
+# - tick duration (in virtual seconds): 1.000000
+
+
+# First column corresponds to the abscissa, expressed in tick offsets.
+# Next columns correspond to following curve names (in that order):
+# - curve #1: 'TastId'
+# - curve #2: 'HostId'
+
+# No zone defined.
+
+201  203 1
+202  178 10
+204  256 17
+205  180 2
+206  167 1
+207  242 19
+209  243 1
+210  173 15
+212  187 5
+215  226 19
+217  250 14
+220  233 3
+224  172 18
+226  215 4
+227  177 14
+228  196 8
+230  176 12
+231  230 14
+233  212 10
+234  181 4
+235  179 14
+236  186 8
+237  246 20
+238  208 15
+239  240 17
+240  236 2
+244  183 16
+248  221 11
+251  231 3
+252  174 15
+254  239 20
+256  244 18
