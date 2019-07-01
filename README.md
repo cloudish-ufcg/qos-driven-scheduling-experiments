@@ -62,6 +62,36 @@ In the case of simulation experiments, the results were divided into two parts f
 
 ## Measurement
 
+In the case of measurement experiments, the results are saved in different files in CSV format. Each experiment generates four result files with information about allocation, waiting time, termination and allocation overhead of pods and deployments. The file formats are explained as follows.
+
+#### Allocation data (`allocation.dat`):
+
+- `timestamp`: Refers to timestamp of allocation event.
+- `podName`: Name of allocated pod.
+- `controllerName`: Name of deployment to which the pod is associated.
+- `hostName`: The host where the pod was allocated.
+- `waitTime`: How long the pod has waited before start running.
+
+#### Waiting data (`waiting.dat`):
+
+- `timestamp`: Refers to timestamp of arrival event.
+- `podName`: Name of pod.
+- `controllerName`: Name of deployment to which the pod is associated.
+
+#### Termination data (`termination.dat`):
+
+- `timestamp`: Refers to timestamp of termination event.
+- `podName`: Name of terminated pod.
+- `controllerName`: Name of deployment to which the pod is associated.
+- `runtime`: How long the pod has run before termination.
+
+#### Starting data (`starting.dat`):
+
+- `timestamp`: Refers to timestamp of termination event.
+- `podName`: Name of allocated pod.
+- `controllerName`: Name of deployment to which the pod is associated.
+- `hostName`: The host where the pod was allocated.
+- `overhead`: The overhead of allocation, i.e. time between the scheduling decision and the moment when the pod was started.
 
 # Simulator 
 
@@ -70,16 +100,16 @@ We have implemented the simulator that is able to emulate both scheduling polici
 `bash run_simulation.sh $SIM_DURATION $SCHEDULING_POLICY $WORKLOAD_FILE $INFRASTRUCTURE_FILE 3 $SAFTEY_MARGIN $PERIODICITY false $PREEMPTION_OVERHEAD_FILE $MIGRATION_OVERHEAD_FILE 1 $LIMITING_PREEMPTION $EXTRA_OVERHEAD`
 
 where,
-- *SIM_DURATION* is the duration of the simulation test in seconds;
-- *SCHEDULING_POLICY* is the scheduling policy to be simulated {ttv | priority};
-- *WORKLOAD_FILE* is the name of the workload file description that should be located in the data directory;
-- *INFRASTRUCTURE_FILE* is the name of the infrastructure file description that should be located in the data directory;
-- *SAFTEY_MARGIN* is the safety margin in seconds to be considered while the the QoS-driven scheduler is making decisions; 
-- *PERIODICITY* is the maximum time between two sequential processing of the pending queue;
-- *PREEMPTION_OVERHEAD_FILE* is the name of the file with a set of preemption overhead values to be considered when an instance is allocated in the same host that it was previously allocated. This file should be located in the data directory;
-- *MIGRATION_OVERHEAD_FILE* is the name of the file with a set of migration overhead values to be considered when an instance is allocated in a host different to the one it was previously allocated. This file should be located in the data directory;
-- *LIMITING_PREEMPTION* is the flag that indicates if the mechanism to limit the number of preemption should be used {true | false};
-- *EXTRA_OVERHEAD* indicates the extra value to be incremented to the default value of 1-SLO, to be considered as the maximum overhead of preemption. For instance, 0 indicates that the limit of overhead is set to 1-SLO.
+- `SIM_DURATION` is the duration of the simulation test in seconds;
+- `SCHEDULING_POLICY` is the scheduling policy to be simulated {ttv | priority};
+- `WORKLOAD_FILE` is the name of the workload file description that should be located in the data directory;
+- `INFRASTRUCTURE_FILE` is the name of the infrastructure file description that should be located in the data directory;
+- `SAFTEY_MARGIN` is the safety margin in seconds to be considered while the the QoS-driven scheduler is making decisions; 
+- `PERIODICITY` is the maximum time between two sequential processing of the pending queue;
+- `PREEMPTION_OVERHEAD_FILE` is the name of the file with a set of preemption overhead values to be considered when an instance is allocated in the same host that it was previously allocated. This file should be located in the data directory;
+- `MIGRATION_OVERHEAD_FILE` is the name of the file with a set of migration overhead values to be considered when an instance is allocated in a host different to the one it was previously allocated. This file should be located in the data directory;
+- `LIMITING_PREEMPTION` is the flag that indicates if the mechanism to limit the number of preemption should be used {true | false};
+- `EXTRA_OVERHEAD` indicates the extra value to be incremented to the default value of 1-SLO, to be considered as the maximum overhead of preemption. For instance, 0 indicates that the limit of overhead is set to 1-SLO.
 
 # QoS-driven scheduler (prototype implementation for kubernetes)
 
