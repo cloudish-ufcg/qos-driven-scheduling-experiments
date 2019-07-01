@@ -43,6 +43,26 @@ This repository also contains all infrastructure definitions used in the experim
 
 In the case of the measurement experiments, the infrastructure is formed by adding nodes into the kubernetes cluster. In the repository ([link](https://github.com/cloudish-ufcg/cloudish-kubernetes-experiment/tree/experiments-journal-paper)) it is possible to find instructions on how to deploy a Kubernetes cluster using the QoS-driven scheduler, how to submit a workload using the broker, and a description of the format of the result files of a measurement experiment.
 
+# Experiments results
+
+This repository also contains the results of the experiments described in the paper. The result files have different formats for simulation and measurement experiments. Both formats are described below. 
+
+## Simulation
+
+In the case of simulation experiments, the results were divided into two parts for each capacity level. One compacted file for each part is available in this repository. Each part contains the results for both scheduling policies (priority-based and QoS-driven) of five workload samples. The part01 contains the results for samples 1 to 5, and part02 contains the results for samples 6 to 10. Once the file is uncompressed, each simulation result file has the following fields:
+
+1. *task id*
+2. *runtime* (the duration of the task, i.e. the amount of time that the task needs to be running to be completed)  
+3. *slo str* (the service class of the task)
+4. *availability* (the final availability of the task)
+5. *submittime* (admission time of the task)
+6. *scheduling* (the scheduling policy simualted)
+7. *cpu req* (the amount of cpu requested by the task)
+8. *workload* (the workload sample of the task)
+
+## Measurement
+
+
 # Simulator 
 
 We have implemented the simulator that is able to emulate both scheduling policies: priority-based and QoS-driven. Our simulator was developed in Erlang on top of the [Sim-diasca simulation framework](http://sim-diasca.com) and it is available at the repository ([link](https://forge.ericsson.net/plugins/git/ufcg-er/cloudish?a=tree&hb=experiments-journal-paper)). In order to run a simulation test, you need to go into the cloudish directory and run the following command:
